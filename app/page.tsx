@@ -213,78 +213,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Products Section */}
-      <section className="products-section">
-        {/* Header row */}
-        <div className="products-header">
-          <span className="products-title">Products</span>
-          <nav className="products-filters">
-            {FILTERS.map((f) => (
-              <button
-                key={f}
-                className={`filter-btn${activeFilter === f ? " active" : ""}`}
-                onClick={() => setActiveFilter(f)}
-              >
-                {f}
-              </button>
-            ))}
-          </nav>
-        </div>
-
-        {/* Grid */}
-        <div className="products-grid">
-          {filteredProducts.map((product) => (
-            <div key={product.id} className="product-card">
-              {/* Flip card */}
-              <div className="flip-card-wrapper">
-                <div className="flip-card-inner">
-                  {/* Front */}
-                  <div className="flip-card-front">
-                    <img
-                      src={`/products/${product.id}F.jpg`}
-                      alt={product.name}
-                    />
-                  </div>
-                  {/* Back */}
-                  <div className="flip-card-back">
-                    <img
-                      src={`/products/${product.id}B.jpg`}
-                      alt={`${product.name} – back`}
-                    />
-                  </div>
-                </div>
-                {/* Add to Bag overlay */}
-                <div className="flip-card-add">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
-                    <line x1="3" y1="6" x2="21" y2="6"/>
-                    <path d="M16 10a4 4 0 0 1-8 0"/>
-                  </svg>
-                  ADD TO BAG
-                </div>
-              </div>
-
-              {/* Product info */}
-              <div className="product-info">
-                <p className="product-name">{product.name}</p>
-                <p className="product-price">{product.price}</p>
-                <div className="product-sizes">
-                  {product.sizes.map((size) => (
-                    <button
-                      key={size}
-                      className={`size-pill${selectedSizes[product.id] === size ? " selected" : ""}`}
-                      onClick={() => toggleSize(product.id, size)}
-                    >
-                      {size}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* 10 Years of Custom Sportswear */}
       <section className="years-section relative w-full bg-[#111] overflow-hidden flex flex-col md:flex-row" style={{ height: '100vh' }}>
         {/* Left: text content */}
@@ -321,6 +249,78 @@ export default function Home() {
           />
           {/* subtle dark vignette on the left edge to blend with text panel */}
           <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#111] to-transparent pointer-events-none" />
+        </div>
+      </section>
+
+      {/* Products Section */}
+      <section className="products-section">
+        {/* Header row */}
+        <div className="products-header">
+          <span className="products-title">Products</span>
+          <nav className="products-filters">
+            {FILTERS.map((f) => (
+              <button
+                key={f}
+                className={`filter-btn${activeFilter === f ? " active" : ""}`}
+                onClick={() => setActiveFilter(f)}
+              >
+                {f}
+              </button>
+            ))}
+          </nav>
+        </div>
+
+        {/* Grid */}
+        <div className="products-grid">
+          {filteredProducts.map((product) => (
+            <div key={product.id} className="product-card">
+              {/* Flip card */}
+              <div className="flip-card-wrapper">
+                <div className="flip-card-inner">
+                  {/* Front */}
+                  <div className="flip-card-front">
+                    <img
+                      src={`/product/${product.id}F.jpg`}
+                      alt={product.name}
+                    />
+                  </div>
+                  {/* Back */}
+                  <div className="flip-card-back">
+                    <img
+                      src={`/product/${product.id}B.jpg`}
+                      alt={`${product.name} – back`}
+                    />
+                  </div>
+                </div>
+                {/* Add to Bag overlay */}
+                <div className="flip-card-add">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                    <line x1="3" y1="6" x2="21" y2="6"/>
+                    <path d="M16 10a4 4 0 0 1-8 0"/>
+                  </svg>
+                  ADD TO BAG
+                </div>
+              </div>
+
+              {/* Product info */}
+              <div className="product-info">
+                <p className="product-name">{product.name}</p>
+                <p className="product-price">{product.price}</p>
+                <div className="product-sizes">
+                  {product.sizes.map((size) => (
+                    <button
+                      key={size}
+                      className={`size-pill${selectedSizes[product.id] === size ? " selected" : ""}`}
+                      onClick={() => toggleSize(product.id, size)}
+                    >
+                      {size}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
     </div>
