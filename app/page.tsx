@@ -292,21 +292,27 @@ export default function Home() {
                     />
                   </div>
                 </div>
-                {/* Add to Bag overlay */}
-                <div className="flip-card-add">
+                {/* Order via Messenger overlay */}
+                <a
+                  href={`https://m.me/MNLKINGPINQUEZON?text=${encodeURIComponent(
+                    selectedSizes[product.id]
+                      ? `Hi! I would like to inquire about the ${product.name} in size ${selectedSizes[product.id]}.`
+                      : `Hi! I would like to inquire about the ${product.name}.`
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flip-card-add"
+                >
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
-                    <line x1="3" y1="6" x2="21" y2="6"/>
-                    <path d="M16 10a4 4 0 0 1-8 0"/>
+                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
                   </svg>
-                  ADD TO BAG
-                </div>
+                  ORDER VIA MESSENGER
+                </a>
               </div>
 
               {/* Product info */}
               <div className="product-info">
                 <p className="product-name">{product.name}</p>
-                <p className="product-price">{product.price}</p>
                 <div className="product-sizes">
                   {product.sizes.map((size) => (
                     <button

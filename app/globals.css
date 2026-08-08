@@ -339,12 +339,12 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #f6f6f4;
+  background: #ffffff;
 }
 
 .flip-card-back {
   transform: rotateY(180deg);
-  background: #f0ede8;
+  background: #ffffff;
 }
 
 .flip-card-front img,
