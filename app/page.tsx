@@ -21,12 +21,31 @@ export default function Home() {
   const jerseyRef = useRef<HTMLDivElement>(null);
   const [activeFilter, setActiveFilter] = useState("ALL");
   const [selectedSizes, setSelectedSizes] = useState<Record<number, string>>({});
+  const [quickAddProduct, setQuickAddProduct] = useState<typeof PRODUCTS[0] | null>(null);
+  const [quickAddSize, setQuickAddSize] = useState("");
 
   const toggleSize = (productId: number, size: string) => {
     setSelectedSizes(prev => ({
       ...prev,
       [productId]: prev[productId] === size ? "" : size,
     }));
+  };
+
+  const openQuickAdd = (product: typeof PRODUCTS[0]) => {
+    setQuickAddProduct(product);
+    setQuickAddSize("");
+  };
+
+  const closeQuickAdd = () => {
+    setQuickAddProduct(null);
+    setQuickAddSize("");
+  };
+
+  const getMessengerUrl = (product: typeof PRODUCTS[0], size: string) => {
+    const msg = size
+      ? `Hi! I would like to order the ${product.name} in size ${size}.`
+      : `Hi! I would like to inquire about the ${product.name}.`;
+    return `https://m.me/MNLKINGPINQUEZON?text=${encodeURIComponent(msg)}`;
   };
 
   const filteredProducts = activeFilter === "ALL"
@@ -293,21 +312,12 @@ export default function Home() {
                   </div>
                 </div>
                 {/* Order via Messenger overlay */}
-                <a
-                  href={`https://m.me/MNLKINGPINQUEZON?text=${encodeURIComponent(
-                    selectedSizes[product.id]
-                      ? `Hi! I would like to inquire about the ${product.name} in size ${selectedSizes[product.id]}.`
-                      : `Hi! I would like to inquire about the ${product.name}.`
-                  )}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button
+                  onClick={() => openQuickAdd(product)}
                   className="flip-card-add"
                 >
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
-                  </svg>
-                  ORDER VIA MESSENGER
-                </a>
+                  ORDER NOW
+                </button>
               </div>
 
               {/* Product info */}
@@ -329,6 +339,54 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      {/* Quick Add Modal */}
+      {quickAddProduct && (
+        <div className="qa-backdrop" onClick={closeQuickAdd}>
+          <div className="qa-modal" onClick={(e) => e.stopPropagation()}>
+            <button className="qa-close" onClick={closeQuickAdd} aria-label="Close">✕</button>
+            <div className="qa-image-wrap">
+              <img
+                src={`/product/${quickAddProduct.id}F.jpg`}
+                alt={quickAddProduct.name}
+              />
+            </div>
+            <div className="qa-body">
+              <p className="qa-eyebrow">QUICK ADD</p>
+              <h2 className="qa-name">{quickAddProduct.name}</h2>
+              <p className="qa-price">{quickAddProduct.price}</p>
+              <div className="qa-divider" />
+              <p className="qa-size-label">CHOOSE A SIZE</p>
+              <div className="qa-sizes">
+                {quickAddProduct.sizes.map((size) => (
+                  <button
+                    key={size}
+                    className={`qa-size-btn${quickAddSize === size ? " selected" : ""}`}
+                    onClick={() => setQuickAddSize(size)}
+                  >
+                    {size}
+                  </button>
+                ))}
+              </div>
+              {!quickAddSize && (
+                <p className="qa-hint">Select a size to add another item.</p>
+              )}
+              <a
+                href={getMessengerUrl(quickAddProduct, quickAddSize)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`qa-order-btn${!quickAddSize ? " disabled" : ""}`}
+                onClick={(e) => { if (!quickAddSize) e.preventDefault(); }}
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.498 1.744 6.614 4.469 8.652V24l4.088-2.242c1.092.301 2.246.464 3.443.464 6.627 0 12-4.974 12-11.111S18.627 0 12 0zm1.191 14.963-3.055-3.26-5.963 3.26L10.732 8.1l3.131 3.26L19.752 8.1l-6.561 6.863z"/>
+                </svg>
+                ORDER NOW
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
