@@ -66,6 +66,10 @@ body {
   width: 100%;
 }
 
+.font-druk {
+  font-family: 'Druk XCond Super', Impact, sans-serif;
+}
+
 /* Hero video overlay gradient */
 .hero-gradient {
   background: linear-gradient(
