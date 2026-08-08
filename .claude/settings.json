@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C /Users/macbookairm2/codebase/mnlkingpin status)",
+      "Bash(git -C /Users/macbookairm2/codebase/mnlkingpin log --oneline --graph --left-right --boundary main...origin/main -10)",
+      "Bash(git -C /Users/macbookairm2/codebase/mnlkingpin pull --no-rebase origin main)",
+      "Bash(git -C /Users/macbookairm2/codebase/mnlkingpin show 48978a9 -- app/page.tsx)"
+    ]
+  }
+}
