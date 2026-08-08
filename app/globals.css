@@ -173,3 +173,52 @@ body {
   position: relative;
 }
 
+/* ─── 10 Years of Custom Sportswear Section ─── */
+.years-eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+  margin-bottom: 18px;
+}
+
+.years-heading {
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  color: #fff;
+  margin-bottom: 28px;
+}
+
+.years-body {
+  font-size: 13px;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 300;
+  max-width: 380px;
+}
+
+.years-cta {
+  display: inline-block;
+  border: 1.5px solid #fff;
+  color: #fff;
+  background: transparent;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  padding: 12px 28px;
+  text-decoration: none;
+  transition: background 0.22s ease, color 0.22s ease;
+}
+
+.years-cta:hover {
+  background: #fff;
+  color: #000;
+}
+
+.years-image-wrap {
+  position: relative;
+}
