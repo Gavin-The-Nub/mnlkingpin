@@ -3,10 +3,35 @@
 import Image from "next/image";
 import { useState, useEffect, useRef, useCallback } from "react";
 
+const PRODUCTS = [
+  { id: 1, name: "LEGAZY PERFORMANCE LONG SLEEVE", price: "P850", sizes: ["M", "L", "XL"], category: "JERSEYS" },
+  { id: 2, name: "LEGAZY SLEEVELESS HOODIE", price: "P800", sizes: ["M", "L", "XL", "2XL"], category: "HOODIES" },
+  { id: 3, name: "LEGAZY COURT MESH SHORTS", price: "P880", sizes: ["M", "L", "XL", "2XL"], category: "SHORTS" },
+  { id: 4, name: "LEGAZY CLASSIC TEE – SAND", price: "P780", sizes: ["M", "L", "XL", "2XL"], category: "JERSEYS" },
+  { id: 5, name: "LEGAZY CLASSIC TEE – BLACK", price: "P780", sizes: ["M", "L", "XL", "2XL"], category: "JERSEYS" },
+  { id: 6, name: "MNL KINGPIN JERSEY", price: "P950", sizes: ["M", "L", "XL", "2XL"], category: "JERSEYS" },
+  { id: 7, name: "LEGAZY MESH SHORTS – BLACK", price: "P880", sizes: ["M", "L", "XL", "2XL"], category: "SHORTS" },
+];
+
+const FILTERS = ["ALL", "JERSEYS", "HOODIES", "SHORTS", "JACKETS", "ACCESSORIES"];
+
 export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [spotlight, setSpotlight] = useState<{ x: number; y: number } | null>(null);
   const jerseyRef = useRef<HTMLDivElement>(null);
+  const [activeFilter, setActiveFilter] = useState("ALL");
+  const [selectedSizes, setSelectedSizes] = useState<Record<number, string>>({});
+
+  const toggleSize = (productId: number, size: string) => {
+    setSelectedSizes(prev => ({
+      ...prev,
+      [productId]: prev[productId] === size ? "" : size,
+    }));
+  };
+
+  const filteredProducts = activeFilter === "ALL"
+    ? PRODUCTS
+    : PRODUCTS.filter(p => p.category === activeFilter);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -188,8 +213,80 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Products Section */}
+      <section className="products-section">
+        {/* Header row */}
+        <div className="products-header">
+          <span className="products-title">Products</span>
+          <nav className="products-filters">
+            {FILTERS.map((f) => (
+              <button
+                key={f}
+                className={`filter-btn${activeFilter === f ? " active" : ""}`}
+                onClick={() => setActiveFilter(f)}
+              >
+                {f}
+              </button>
+            ))}
+          </nav>
+        </div>
+
+        {/* Grid */}
+        <div className="products-grid">
+          {filteredProducts.map((product) => (
+            <div key={product.id} className="product-card">
+              {/* Flip card */}
+              <div className="flip-card-wrapper">
+                <div className="flip-card-inner">
+                  {/* Front */}
+                  <div className="flip-card-front">
+                    <img
+                      src={`/products/${product.id}F.jpg`}
+                      alt={product.name}
+                    />
+                  </div>
+                  {/* Back */}
+                  <div className="flip-card-back">
+                    <img
+                      src={`/products/${product.id}B.jpg`}
+                      alt={`${product.name} – back`}
+                    />
+                  </div>
+                </div>
+                {/* Add to Bag overlay */}
+                <div className="flip-card-add">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                    <line x1="3" y1="6" x2="21" y2="6"/>
+                    <path d="M16 10a4 4 0 0 1-8 0"/>
+                  </svg>
+                  ADD TO BAG
+                </div>
+              </div>
+
+              {/* Product info */}
+              <div className="product-info">
+                <p className="product-name">{product.name}</p>
+                <p className="product-price">{product.price}</p>
+                <div className="product-sizes">
+                  {product.sizes.map((size) => (
+                    <button
+                      key={size}
+                      className={`size-pill${selectedSizes[product.id] === size ? " selected" : ""}`}
+                      onClick={() => toggleSize(product.id, size)}
+                    >
+                      {size}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* 10 Years of Custom Sportswear */}
-      <section className="years-section relative w-full bg-[#111] overflow-hidden flex flex-col md:flex-row" style={{ minHeight: '600px' }}>
+      <section className="years-section relative w-full bg-[#111] overflow-hidden flex flex-col md:flex-row" style={{ height: '100vh' }}>
         {/* Left: text content */}
         <div className="years-content flex flex-col justify-center px-16 py-20 md:w-[42%] flex-shrink-0 z-10">
           <p className="years-eyebrow">EST. 2015</p>
