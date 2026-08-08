@@ -25,8 +25,12 @@ export default function Home() {
 
         {/* Main Navigation */}
         <nav
-          className="relative flex items-center justify-between px-8 py-[14px]"
-          style={{ background: "rgba(10,10,10,0.80)", backdropFilter: "blur(6px)" }}
+          className="relative flex items-center justify-between px-8 py-[14px] transition-all duration-300"
+          style={
+            isScrolled
+              ? { background: "rgba(10,10,10,0.80)", backdropFilter: "blur(6px)" }
+              : { background: "transparent", backdropFilter: "none" }
+          }
         >
           {/* Left nav links */}
           <ul className="flex items-center gap-7">
@@ -67,36 +71,14 @@ export default function Home() {
               </li>
             ))}
 
-            {/* Cart */}
-            <li>
-              <a href="#" className="cart-icon text-white hover:text-gray-300 transition-colors">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="18"
-                  height="18"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={1.8}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.4 6h12.8M7 13H5.4M9 21a1 1 0 100-2 1 1 0 000 2zm10 0a1 1 0 100-2 1 1 0 000 2z"
-                  />
-                </svg>
-                <span className="cart-badge">1</span>
-              </a>
-            </li>
-
-            {/* Track Order */}
+            {/* Order Now */}
             <li>
               <a
                 href="#"
-                id="track-order-btn"
+                id="order-now-btn"
                 className="btn-outline border border-white text-white text-[10px] tracking-[0.2em] font-semibold px-4 py-[7px] hover:bg-white hover:text-black"
               >
-                TRACK ORDER
+                ORDER NOW
               </a>
             </li>
           </ul>
@@ -175,22 +157,7 @@ export default function Home() {
             style={{ filter: "invert(1) brightness(10)" }}
           />
 
-          {/* Facebook ORDER NOW */}
-          <a
-            href="#"
-            id="order-now-btn"
-            className="flex items-center gap-2 text-white text-[11px] tracking-[0.15em] font-medium hover:text-gray-300 transition-colors"
-          >
-            {/* Facebook F icon */}
-            <span
-              className="flex items-center justify-center w-5 h-5 rounded-full text-[11px] font-bold leading-none"
-              style={{ background: "#1877F2" }}
-              aria-label="Facebook"
-            >
-              f
-            </span>
-            ORDER NOW
-          </a>
+
         </div>
       </section>
     </div>
