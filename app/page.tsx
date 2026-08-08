@@ -154,7 +154,6 @@ export default function Home() {
             alt="GameStrong"
             width={185}
             height={80}
-            style={{ filter: "invert(1) brightness(10)" }}
           />
 
 
