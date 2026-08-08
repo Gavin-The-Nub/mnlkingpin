@@ -1,10 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 
 export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [spotlight, setSpotlight] = useState<{ x: number; y: number } | null>(null);
+  const jerseyRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,16 +16,25 @@ export default function Home() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = jerseyRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    setSpotlight({ x, y });
+  }, []);
+
+  const handleMouseLeave = useCallback(() => {
+    setSpotlight(null);
+  }, []);
+
   return (
     <div className="min-h-screen bg-black text-white overflow-x-hidden">
-      {/* ─── Fixed Header Stack ─── */}
+      {/* Fixed Header */}
       <header className="fixed top-0 left-0 right-0 z-50">
-        {/* Announcement Bar */}
         <div className="bg-black text-white text-center text-[11px] tracking-[0.2em] py-[7px] border-b border-white/10 font-light">
           PREMIUM CUSTOM SPORTSWEAR. 12 PCS MINIMUM
         </div>
-
-        {/* Main Navigation */}
         <nav
           className="relative flex items-center justify-between px-8 py-[14px] transition-all duration-300"
           style={
@@ -32,52 +43,28 @@ export default function Home() {
               : { background: "transparent", backdropFilter: "none" }
           }
         >
-          {/* Left nav links */}
           <ul className="flex items-center gap-7">
             {["HOME", "ABOUT US", "CUSTOMIZE", "CONCEPTS", "SHOP"].map((item) => (
               <li key={item}>
-                <a
-                  href="#"
-                  className="nav-link text-white text-[11px] tracking-[0.18em] font-medium hover:text-gray-300"
-                >
+                <a href="#" className="nav-link text-white text-[11px] tracking-[0.18em] font-medium hover:text-gray-300">
                   {item}
                 </a>
               </li>
             ))}
           </ul>
-
-          {/* Center Logo */}
           <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2">
-            <Image
-              src="/logo-black.png"
-              alt="MNL Kingpin"
-              width={155}
-              height={46}
-              priority
-              style={{ filter: "invert(1) brightness(10)" }}
-            />
+            <Image src="/logo-black.png" alt="MNL Kingpin" width={155} height={46} priority style={{ filter: "invert(1) brightness(10)" }} />
           </div>
-
-          {/* Right nav links */}
           <ul className="flex items-center gap-6">
             {["SIZE GUIDE", "CONTACT"].map((item) => (
               <li key={item}>
-                <a
-                  href="#"
-                  className="nav-link text-white text-[11px] tracking-[0.18em] font-medium hover:text-gray-300"
-                >
+                <a href="#" className="nav-link text-white text-[11px] tracking-[0.18em] font-medium hover:text-gray-300">
                   {item}
                 </a>
               </li>
             ))}
-
-            {/* Order Now */}
             <li>
-              <a
-                href="#"
-                id="order-now-btn"
-                className="btn-outline border border-white text-white text-[10px] tracking-[0.2em] font-semibold px-4 py-[7px] hover:bg-white hover:text-black"
-              >
+              <a href="#" id="order-now-btn" className="btn-outline border border-white text-white text-[10px] tracking-[0.2em] font-semibold px-4 py-[7px] hover:bg-white hover:text-black">
                 ORDER NOW
               </a>
             </li>
@@ -85,78 +72,119 @@ export default function Home() {
         </nav>
       </header>
 
-      {/* ─── Hero Section ─── */}
+      {/* Hero Section */}
       <section className="relative w-full h-screen overflow-hidden">
-        {/* Video Background */}
-        <video
-          className="absolute inset-0 w-full h-full object-cover"
-          autoPlay
-          muted
-          loop
-          playsInline
-          aria-hidden="true"
-        >
+        <video className="absolute inset-0 w-full h-full object-cover" autoPlay muted loop playsInline aria-hidden="true">
           <source src="/herocover.mp4" type="video/mp4" />
         </video>
-
-        {/* Gradient Overlay */}
         <div className="hero-gradient absolute inset-0" />
-        {/* Bottom fade to black */}
-        <div
-          className="absolute bottom-0 left-0 right-0 h-32"
-          style={{ background: "linear-gradient(to top, rgba(0,0,0,0.5), transparent)" }}
-        />
-
-        {/* ── Bottom-Left Content ── */}
+        <div className="absolute bottom-0 left-0 right-0 h-32" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.5), transparent)" }} />
         <div className="absolute bottom-10 left-10 z-10 max-w-xs">
-          {/* MNL Kingpin Badge Logo */}
           <div className="mb-4">
-            <Image
-              src="/logo2.png"
-              alt="MNL Kingpin Est. 2015"
-              width={210}
-              height={210}
-              style={{ filter: "invert(1) brightness(10)" }}
-            />
+            <Image src="/logo2.png" alt="MNL Kingpin Est. 2015" width={210} height={210} style={{ filter: "invert(1) brightness(10)" }} />
+          </div>
+          <p className="text-white/85 text-[13px] leading-[1.75] mb-6 font-light">
+            Built for the game. Designed to lead. Premium custom sportswear engineered for performance, comfort, and a look that sets your team apart.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <a href="#" id="view-products-btn" className="btn-primary bg-white text-black text-[10px] font-bold tracking-[0.2em] px-5 py-[11px] hover:bg-gray-200">VIEW PRODUCTS</a>
+            <a href="#" id="request-quote-btn" className="btn-outline border border-white text-white text-[10px] font-bold tracking-[0.2em] px-5 py-[11px] hover:bg-white hover:text-black">REQUEST A QUOTE</a>
+          </div>
+        </div>
+        <div className="absolute bottom-8 right-8 z-10 flex flex-col items-end gap-2">
+          <Image src="/gamestrong logo.png" alt="GameStrong" width={185} height={80} />
+        </div>
+      </section>
+
+      {/* Marquee Strip */}
+      <div className="marquee-strip">
+        <div className="marquee-track">
+          {[...Array(8)].map((_, i) => (
+            <span key={i} className="marquee-item">
+              <span className="marquee-text">MNL KINGPIN</span>
+              <span className="marquee-dot">✦</span>
+              <span className="marquee-text">GMSTRNG</span>
+              <span className="marquee-dot">✦</span>
+              <span className="marquee-text">PREMIUM CUSTOM SPORTSWEAR</span>
+              <span className="marquee-dot">✦</span>
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* From Blank to GameStrong */}
+      <section className="relative w-full bg-[#f0efeb] py-20 overflow-hidden">
+        <div className="text-center mb-10">
+          <p className="text-[10px] tracking-[0.35em] text-black/40 font-semibold uppercase mb-3">Fully Customizable</p>
+          <h2 className="text-[clamp(2rem,5vw,3.5rem)] font-black tracking-[-0.02em] text-black uppercase leading-none">
+            FROM BLANK TO GAMESTRONG
+          </h2>
+        </div>
+
+        <div
+          ref={jerseyRef}
+          className="jersey-reveal-container relative mx-auto cursor-crosshair select-none"
+          style={{ maxWidth: '860px', width: '92%' }}
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeave}
+        >
+          {/* Base: blank jersey */}
+          <Image src="/blank jersey.png" alt="Blank jersey" width={860} height={710} className="w-full h-auto block" priority />
+
+          {/* Design layer: revealed only under spotlight cursor */}
+          <div
+            className="absolute inset-0"
+            style={{
+              opacity: spotlight ? 1 : 0,
+              WebkitMaskImage: spotlight
+                ? `radial-gradient(circle 210px at ${spotlight.x}% ${spotlight.y}%, black 30%, transparent 100%)`
+                : undefined,
+              maskImage: spotlight
+                ? `radial-gradient(circle 210px at ${spotlight.x}% ${spotlight.y}%, black 30%, transparent 100%)`
+                : undefined,
+            }}
+          >
+            <Image src="/jersey with design.png" alt="Jersey with custom design" width={860} height={710} className="w-full h-auto block" priority />
           </div>
 
-          {/* Tagline */}
-          <p className="text-white/85 text-[13px] leading-[1.75] mb-6 font-light">
-            Built for the game. Designed to lead. Premium custom
-            sportswear engineered for performance, comfort, and a look
-            that sets your team apart.
-          </p>
+          {/* Feature labels — z-10, above both image layers */}
+          <div className="absolute z-10 flex items-center gap-2 pointer-events-none" style={{ left: '1%', top: '33%' }}>
+            <span className="label-tag">Fully Sublimated</span>
+            <div className="label-line" />
+            <div className="label-dot" />
+          </div>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-wrap gap-3">
-            <a
-              href="#"
-              id="view-products-btn"
-              className="btn-primary bg-white text-black text-[10px] font-bold tracking-[0.2em] px-5 py-[11px] hover:bg-gray-200"
-            >
-              VIEW PRODUCTS
-            </a>
-            <a
-              href="#"
-              id="request-quote-btn"
-              className="btn-outline border border-white text-white text-[10px] font-bold tracking-[0.2em] px-5 py-[11px] hover:bg-white hover:text-black"
-            >
-              REQUEST A QUOTE
-            </a>
+          <div className="absolute z-10 flex items-center gap-2 pointer-events-none" style={{ right: '1%', top: '10%' }}>
+            <div className="label-dot" />
+            <div className="label-line" />
+            <span className="label-tag">Knitted Ribbings &amp; Neckline</span>
+          </div>
+
+          <div className="absolute z-10 flex items-center gap-2 pointer-events-none" style={{ right: '1%', top: '46%' }}>
+            <div className="label-dot" />
+            <div className="label-line" />
+            <span className="label-tag">Drifit Quiana Fabric</span>
+          </div>
+
+          <div className="absolute z-10 flex items-center gap-2 pointer-events-none" style={{ left: '1%', bottom: '20%' }}>
+            <span className="label-tag">100% Customized</span>
+            <div className="label-line" />
+            <div className="label-dot" />
           </div>
         </div>
 
-        {/* ── Bottom-Right Content ── */}
-        <div className="absolute bottom-8 right-8 z-10 flex flex-col items-end gap-2">
-          {/* GameStrong Logo */}
-          <Image
-            src="/gamestrong logo.png"
-            alt="GameStrong"
-            width={185}
-            height={80}
-          />
+        <p className="text-center text-[10px] tracking-[0.28em] text-black/40 font-semibold uppercase mt-8">
+          Hover to reveal · Click for full design
+        </p>
+      </section>
 
-
+      {/* Trusted By */}
+      <section className="relative w-full bg-[#f0efeb] pt-0 pb-24 overflow-hidden">
+        <div className="w-full flex justify-center mb-16">
+          <div className="w-[90%] max-w-5xl h-px bg-black/10" />
+        </div>
+        <div className="mx-auto px-8" style={{ maxWidth: '1100px' }}>
+          <Image src="/trusted by.png" alt="Trusted by PBA 3X3, MPBL, NBTC, NCAA Philippines" width={1100} height={220} className="w-full h-auto" />
         </div>
       </section>
     </div>

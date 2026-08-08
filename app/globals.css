@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #000000;
+  --foreground: #ffffff;
 }
 
 @theme inline {
@@ -12,15 +12,164 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
 }
+
+/* Cart icon styling */
+.cart-icon {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background: white;
+  color: black;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  font-size: 10px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+/* Nav hover underline effect */
+.nav-link {
+  position: relative;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: white;
+  transition: width 0.25s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Hero video overlay gradient */
+.hero-gradient {
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.72) 0%,
+    rgba(0, 0, 0, 0.3) 50%,
+    rgba(0, 0, 0, 0.15) 100%
+  );
+}
+
+/* Button pulse on hover */
+.btn-primary {
+  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-primary:hover {
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.25);
+}
+
+.btn-outline {
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+/* ─── Marquee / ticker strip ─── */
+@keyframes marquee-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-strip {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: #000;
+  height: 48px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.marquee-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  height: 48px;
+  animation: marquee-scroll 28s linear infinite;
+  will-change: transform;
+}
+
+.marquee-strip:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+.marquee-item {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.marquee-text {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: #fff;
+  text-transform: uppercase;
+  padding: 0 18px;
+}
+
+.marquee-dot {
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 9px;
+  padding: 0 4px;
+}
+
+/* ─── Feature Labels ─── */
+.label-tag {
+  background: #000;
+  color: #fff;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  white-space: nowrap;
+}
+
+.label-line {
+  width: 40px;
+  height: 1px;
+  background: #000;
+  flex-shrink: 0;
+}
+
+.label-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 2px solid #000;
+  background: #f0efeb;
+  flex-shrink: 0;
+}
+
+/* ─── Jersey reveal (spotlight via mask — no transition needed) ─── */
+.jersey-reveal-container {
+  position: relative;
+}
+
