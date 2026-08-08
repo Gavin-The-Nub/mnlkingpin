@@ -340,6 +340,72 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Let's Create Together Section */}
+      <section className="relative w-full flex flex-col md:flex-row overflow-hidden" style={{ height: '100vh' }}>
+        {/* Left: product image — ~60% width */}
+        <div className="relative md:w-[60%] flex-shrink-0 min-h-[50vh] md:min-h-0">
+          <Image
+            src="/productts.png"
+            alt="MNL Kingpin full product lineup — jerseys, hoodies, shorts, jackets and accessories"
+            fill
+            className="object-cover object-top"
+            sizes="(max-width: 768px) 100vw, 60vw"
+          />
+        </div>
+
+        {/* Right: dark panel with text */}
+        <div className="relative flex-1 bg-black flex flex-col justify-center px-12 py-16 md:px-16">
+          {/* Heading */}
+          <h2 className="text-[clamp(1.8rem,3.5vw,3rem)] font-light tracking-[-0.01em] text-white leading-tight mb-8">
+            Let&apos;s Create Together
+          </h2>
+
+          {/* Eyebrow + description */}
+          <p className="text-[9px] tracking-[0.28em] text-white/50 font-semibold uppercase mb-3">
+            PRODUCTS &amp; SERVICES
+          </p>
+          <p className="text-white/65 text-[13px] leading-[1.8] font-light mb-4" style={{ maxWidth: '320px' }}>
+            Full sublimation sports apparel for teams, brands, schools, and leagues. We make polos, t-shirts, varsity jackets, volleyball uniforms, and custom sportswear for any sport.
+          </p>
+
+          {/* Divider */}
+          <div className="w-full h-px bg-white/10 my-5" style={{ maxWidth: '320px' }} />
+
+          {/* Min order note */}
+          <p className="text-[9px] tracking-[0.24em] text-white/45 font-semibold uppercase mb-7">
+            12 PCS MINIMUM · RUSH ORDERS AVAILABLE
+          </p>
+
+          {/* CTA button — pill shape */}
+          <div>
+            <a
+              href="https://m.me/MNLKINGPINQUEZON"
+              target="_blank"
+              rel="noopener noreferrer"
+              id="create-together-btn"
+              className="inline-block bg-white text-black text-[9px] font-bold tracking-[0.22em] px-7 py-[12px] rounded-full hover:bg-gray-200 transition-colors duration-200"
+            >
+              START YOUR CUSTOM ORDER
+            </a>
+          </div>
+
+          {/* Facebook ORDER NOW — pinned bottom-right */}
+          <div className="absolute bottom-7 right-8 flex items-center gap-2">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="white" aria-hidden="true" style={{ opacity: 0.55 }}>
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+            <a
+              href="https://m.me/MNLKINGPINQUEZON"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[9px] tracking-[0.2em] text-white/55 font-semibold uppercase hover:text-white transition-colors duration-200"
+            >
+              ORDER NOW
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* Quick Add Modal */}
       {quickAddProduct && (
         <div className="qa-backdrop" onClick={closeQuickAdd}>
