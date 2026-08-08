@@ -187,6 +187,45 @@ export default function Home() {
           <Image src="/trusted by.png" alt="Trusted by PBA 3X3, MPBL, NBTC, NCAA Philippines" width={1100} height={220} className="w-full h-auto" />
         </div>
       </section>
+
+      {/* 10 Years of Custom Sportswear */}
+      <section className="years-section relative w-full bg-[#111] overflow-hidden flex flex-col md:flex-row" style={{ minHeight: '600px' }}>
+        {/* Left: text content */}
+        <div className="years-content flex flex-col justify-center px-16 py-20 md:w-[42%] flex-shrink-0 z-10">
+          <p className="years-eyebrow">EST. 2015</p>
+          <h2 className="years-heading">
+            10 Years of<br />Custom Sportswear
+          </h2>
+          <p className="years-body">
+            For over 10 years, MNL Kingpin has created custom teamwear built for
+            performance, identity, and pride—from grassroots teams to
+            professional athletes. Born in Quezon City and trusted across the
+            Philippines, we combine bold design, premium craftsmanship, and a
+            passion for every game.
+          </p>
+          <p className="years-body mt-4">
+            Founded in Quezon City, MNL Kingpin is a trusted partner of players,
+            basketball leagues, schools, and brands across the Philippines.
+          </p>
+          <div className="mt-10">
+            <a href="#" id="our-story-btn" className="years-cta">OUR STORY</a>
+          </div>
+        </div>
+
+        {/* Right: players collage image */}
+        <div className="years-image-wrap relative flex-1 min-h-[400px] md:min-h-0">
+          <Image
+            src="/big screen players.png"
+            alt="MNL Kingpin athletes — PBA, MPBL and grassroots players wearing custom sportswear"
+            fill
+            className="object-cover object-center"
+            sizes="(max-width: 768px) 100vw, 58vw"
+            priority
+          />
+          {/* subtle dark vignette on the left edge to blend with text panel */}
+          <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#111] to-transparent pointer-events-none" />
+        </div>
+      </section>
     </div>
   );
 }
