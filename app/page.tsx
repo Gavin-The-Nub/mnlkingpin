@@ -449,7 +449,7 @@ export default function Home() {
         </p>
 
         {/* Headline */}
-        <h2 style={{ fontSize: 'clamp(48px, 8vw, 80px)', fontWeight: '400', lineHeight: '1.1', color: '#111', marginBottom: '24px', letterSpacing: '-0.02em' }}>
+        <h2 style={{ fontSize: 'clamp(32px, 4.5vw, 48px)', fontWeight: '400', lineHeight: '1.1', color: '#111', marginBottom: '24px', letterSpacing: '-0.02em' }}>
           Let&apos;s Create<br />Together
         </h2>
 
@@ -464,8 +464,8 @@ export default function Home() {
             href="https://www.facebook.com/MNLKINGPINQUEZON"
             target="_blank"
             rel="noopener noreferrer"
-            style={{ fontSize: '10px', fontWeight: '700', letterSpacing: '0.18em', color: '#111', textTransform: 'uppercase', textDecoration: 'none', padding: '14px 24px' }}
-            onMouseOver={(e) => (e.currentTarget.style.opacity = '0.6')}
+            style={{ fontSize: '10px', fontWeight: '700', letterSpacing: '0.18em', color: '#fff', backgroundColor: '#111', textTransform: 'uppercase', textDecoration: 'none', padding: '14px 24px', display: 'inline-block' }}
+            onMouseOver={(e) => (e.currentTarget.style.opacity = '0.8')}
             onMouseOut={(e) => (e.currentTarget.style.opacity = '1')}
           >
             MESSAGE ON FACEBOOK
@@ -496,12 +496,12 @@ export default function Home() {
       <footer style={{ borderTop: '1px solid #e5e5e5', paddingTop: '60px', paddingBottom: '40px', backgroundColor: '#fff' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 32px' }}>
           {/* Top row */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: '48px', paddingBottom: '48px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1.6fr 0.8fr 0.8fr 1fr', gap: '48px', paddingBottom: '48px' }}>
 
             {/* Brand column */}
             <div>
               <div style={{ marginBottom: '16px' }}>
-                <Image src="/logo.png" alt="MNL Kingpin" width={120} height={32} style={{ objectFit: 'contain', filter: 'invert(0)' }} />
+                <Image src="/logo-black.png" alt="MNL Kingpin" width={160} height={40} style={{ objectFit: 'contain' }} />
               </div>
               <p style={{ fontSize: '12px', color: '#555', lineHeight: '1.7', maxWidth: '220px', marginBottom: '20px' }}>
                 Premium custom sportswear from Quezon, Philippines. Founded in 2015. Trusted by teams from youth leagues to the pros.
@@ -585,12 +585,45 @@ export default function Home() {
           </div>
 
           {/* Bottom bar */}
-          <div style={{ borderTop: '1px solid #e5e5e5', paddingTop: '20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div style={{ borderTop: '1px solid #e5e5e5', paddingTop: '20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '8px' }}>
             <p style={{ fontSize: '11px', color: '#aaa' }}>© 2026 MNL Kingpin Sportswear. All rights reserved.</p>
-            <p style={{ fontSize: '11px', color: '#aaa' }}>Game Strong / Est. 2015 / Quezon, PH</p>
+            <p style={{ fontSize: '11px', color: '#aaa' }}>
+              Game Strong / Est. 2015 / Quezon City, PH &nbsp;·&nbsp; Developed by{' '}
+              <a href="#" style={{ color: '#aaa', textDecoration: 'underline' }}>Errol Aaron Merjudio</a>
+            </p>
           </div>
         </div>
       </footer>
+
+      {/* Floating Order Now button */}
+      <a
+        href="https://www.facebook.com/MNLKINGPINQUEZON"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          position: 'fixed',
+          bottom: '24px',
+          right: '24px',
+          zIndex: 60,
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px',
+          backgroundColor: '#111',
+          color: '#fff',
+          borderRadius: '999px',
+          padding: '12px 20px',
+          fontSize: '11px',
+          fontWeight: '700',
+          letterSpacing: '0.1em',
+          textTransform: 'uppercase',
+          textDecoration: 'none',
+        }}
+      >
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="#fff" aria-hidden="true">
+          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+        </svg>
+        Order Now
+      </a>
 
     </div>
 
