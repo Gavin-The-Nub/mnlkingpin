@@ -39,9 +39,22 @@ export default function Footer() {
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '10px' }}>
               {['Home', 'About Us', 'Customize', 'Concepts', 'Shop', 'Track Order', 'Production Status', 'Size Guide', 'Newsletter'].map((link) => (
                 <li key={link}>
-                  <a href={link === 'Size Guide' ? '/size-guide' : link === 'Home' ? '/' : '#'} style={{ fontSize: '12px', color: '#555', textDecoration: 'none' }}
-                    onMouseOver={(e) => (e.currentTarget.style.color = '#000')}
-                    onMouseOut={(e) => (e.currentTarget.style.color = '#555')}>
+                  <a href={link === 'Size Guide' ? '/size-guide' : link === 'Home' ? '/' : '#'} 
+                    style={{ 
+                      fontSize: '12px', 
+                      color: '#666', 
+                      fontWeight: '400',
+                      textDecoration: 'none',
+                      transition: 'all 0.15s ease'
+                    }}
+                    onMouseOver={(e) => {
+                      e.currentTarget.style.color = '#000';
+                      e.currentTarget.style.fontWeight = '700';
+                    }}
+                    onMouseOut={(e) => {
+                      e.currentTarget.style.color = '#666';
+                      e.currentTarget.style.fontWeight = '400';
+                    }}>
                     {link}
                   </a>
                 </li>
@@ -55,9 +68,22 @@ export default function Footer() {
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '10px' }}>
               {['Basketball Jerseys', 'Volleyball Uniforms', 'Esports Jerseys', 'Corporate Wear'].map((product) => (
                 <li key={product}>
-                  <a href="#" style={{ fontSize: '12px', color: '#555', textDecoration: 'none' }}
-                    onMouseOver={(e) => (e.currentTarget.style.color = '#000')}
-                    onMouseOut={(e) => (e.currentTarget.style.color = '#555')}>
+                  <a href="#" 
+                    style={{ 
+                      fontSize: '12px', 
+                      color: '#666', 
+                      fontWeight: '400',
+                      textDecoration: 'none',
+                      transition: 'all 0.15s ease'
+                    }}
+                    onMouseOver={(e) => {
+                      e.currentTarget.style.color = '#000';
+                      e.currentTarget.style.fontWeight = '700';
+                    }}
+                    onMouseOut={(e) => {
+                      e.currentTarget.style.color = '#666';
+                      e.currentTarget.style.fontWeight = '400';
+                    }}>
                     {product}
                   </a>
                 </li>

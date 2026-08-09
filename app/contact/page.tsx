@@ -669,9 +669,21 @@ export default function ContactPage() {
                   <li key={link}>
                     <Link
                       href="#"
-                      style={{ fontSize: "12px", color: "#555", textDecoration: "none", transition: "color 0.2s ease" }}
-                      onMouseOver={(e) => (e.currentTarget.style.color = "#000")}
-                      onMouseOut={(e) => (e.currentTarget.style.color = "#555")}
+                      style={{ 
+                        fontSize: "12px", 
+                        color: "#666", 
+                        fontWeight: "400",
+                        textDecoration: "none", 
+                        transition: "all 0.15s ease" 
+                      }}
+                      onMouseOver={(e) => {
+                        e.currentTarget.style.color = "#000";
+                        e.currentTarget.style.fontWeight = "700";
+                      }}
+                      onMouseOut={(e) => {
+                        e.currentTarget.style.color = "#666";
+                        e.currentTarget.style.fontWeight = "400";
+                      }}
                     >
                       {link}
                     </Link>
@@ -688,9 +700,21 @@ export default function ContactPage() {
                   <li key={product}>
                     <Link
                       href="#"
-                      style={{ fontSize: "12px", color: "#555", textDecoration: "none", transition: "color 0.2s ease" }}
-                      onMouseOver={(e) => (e.currentTarget.style.color = "#000")}
-                      onMouseOut={(e) => (e.currentTarget.style.color = "#555")}
+                      style={{ 
+                        fontSize: "12px", 
+                        color: "#666", 
+                        fontWeight: "400",
+                        textDecoration: "none", 
+                        transition: "all 0.15s ease" 
+                      }}
+                      onMouseOver={(e) => {
+                        e.currentTarget.style.color = "#000";
+                        e.currentTarget.style.fontWeight = "#700";
+                      }}
+                      onMouseOut={(e) => {
+                        e.currentTarget.style.color = "#666";
+                        e.currentTarget.style.fontWeight = "#400";
+                      }}
                     >
                       {product}
                     </Link>
