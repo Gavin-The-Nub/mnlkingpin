@@ -1,9 +1,14 @@
 "use client";
 
 import Image from "next/image";
+<<<<<<< HEAD
 import { useState, useRef, useCallback } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+=======
+import Link from "next/link";
+import { useState, useEffect, useRef, useCallback } from "react";
+>>>>>>> a7fcb26 (dfdfff)
 
 const PRODUCTS = [
   { id: 1, name: "LEGAZY PERFORMANCE LONG SLEEVE", price: "P850", sizes: ["M", "L", "XL"], category: "JERSEYS" },
@@ -67,7 +72,62 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-black text-white overflow-x-hidden">
+<<<<<<< HEAD
       <Header />
+=======
+      {/* Fixed Header */}
+      <header className="fixed top-0 left-0 right-0 z-50">
+        <div className="bg-black text-white text-center text-[11px] tracking-[0.2em] py-[7px] border-b border-white/10 font-light">
+          PREMIUM CUSTOM SPORTSWEAR. 12 PCS MINIMUM
+        </div>
+        <nav
+          className="relative flex items-center justify-between px-8 py-[14px] transition-all duration-300"
+          style={
+            isScrolled
+              ? { background: "rgba(10,10,10,0.80)", backdropFilter: "blur(6px)" }
+              : { background: "transparent", backdropFilter: "none" }
+          }
+        >
+          <ul className="flex items-center gap-7">
+            {[
+              { label: "HOME", href: "/" },
+              { label: "ABOUT US", href: "/about" },
+              { label: "CUSTOMIZE", href: "/customize" },
+              { label: "CONCEPTS", href: "/concepts" },
+              { label: "SHOP", href: "/shop" },
+            ].map((item) => (
+              <li key={item.label}>
+                <a href={item.href} className="nav-link text-white text-[11px] tracking-[0.18em] font-medium hover:text-gray-300">
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2">
+            <a href="/">
+              <Image src="/logo-black.png" alt="MNL Kingpin" width={155} height={46} priority style={{ filter: "invert(1) brightness(10)" }} />
+            </a>
+          </div>
+          <ul className="flex items-center gap-6">
+            {[
+              { label: "SIZE GUIDE", href: "/size-guide" },
+              { label: "CONTACT", href: "/contact" },
+            ].map((item) => (
+              <li key={item.label}>
+                <a href={item.href} className="nav-link text-white text-[11px] tracking-[0.18em] font-medium hover:text-gray-300">
+                  {item.label}
+                </a>
+              </li>
+            ))}
+            <li>
+              <a href="https://www.facebook.com/MNLKINGPINQUEZON" target="_blank" rel="noopener noreferrer" id="order-now-btn" className="btn-outline border border-white text-white text-[10px] tracking-[0.2em] font-semibold px-4 py-[7px] hover:bg-white hover:text-black">
+                ORDER NOW
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+>>>>>>> a7fcb26 (dfdfff)
 
       {/* Hero Section */}
       <section className="relative w-full h-screen overflow-hidden">
@@ -383,69 +443,55 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className={`qa-order-btn${!quickAddSize ? " disabled" : ""}`}
                 onClick={(e) => { if (!quickAddSize) e.preventDefault(); }}
-              >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                  <path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.498 1.744 6.614 4.469 8.652V24l4.088-2.242c1.092.301 2.246.464 3.443.464 6.627 0 12-4.974 12-11.111S18.627 0 12 0zm1.191 14.963-3.055-3.26-5.963 3.26L10.732 8.1l3.131 3.26L19.752 8.1l-6.561 6.863z"/>
-                </svg>
-                ORDER NOW
-              </a>
             </div>
+            <a
+              href="https://www.facebook.com/MNLKINGPINQUEZON"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block w-full bg-white text-black text-center text-xs font-bold tracking-[0.2em] py-4 hover:bg-gray-200 transition"
+            >
+              ORDER VIA FACEBOOK
+            </a>
           </div>
         </div>
       )}
-      {/* Let's Create Together CTA Section */}
-      <section style={{ backgroundColor: '#fff', padding: '100px 32px 80px', textAlign: 'center', borderTop: '1px solid #e5e5e5' }}>
 
-        {/* Eyebrow */}
-        <p style={{ fontSize: '10px', letterSpacing: '0.22em', color: '#aaa', fontWeight: '600', textTransform: 'uppercase', marginBottom: '20px' }}>
-          READY TO ORDER?
-        </p>
-
-        {/* Headline */}
-        <h2 style={{ fontSize: 'clamp(32px, 4.5vw, 48px)', fontWeight: '400', lineHeight: '1.1', color: '#111', marginBottom: '24px', letterSpacing: '-0.02em' }}>
-          Let&apos;s Create<br />Together
-        </h2>
-
-        {/* Subtext */}
-        <p style={{ fontSize: '14px', color: '#888', marginBottom: '48px', maxWidth: '480px', margin: '0 auto 48px' }}>
-          Message us with your vision and we&apos;ll take it from there: design, production, delivery.
-        </p>
-
-        {/* Buttons */}
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
-          <a
-            href="https://www.facebook.com/MNLKINGPINQUEZON"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ fontSize: '10px', fontWeight: '700', letterSpacing: '0.18em', color: '#fff', backgroundColor: '#111', textTransform: 'uppercase', textDecoration: 'none', padding: '14px 24px', display: 'inline-block' }}
-            onMouseOver={(e) => (e.currentTarget.style.opacity = '0.8')}
-            onMouseOut={(e) => (e.currentTarget.style.opacity = '1')}
+      {/* Black CTA Banner */}
+      <section style={{ backgroundColor: "#111", color: "#fff", padding: "64px 40px", fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" }}>
+        <div style={{ maxWidth: "1200px", margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "24px" }}>
+          <div>
+            <h2 style={{ fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif", fontSize: "clamp(2rem, 3.8vw, 3.2rem)", fontWeight: "400", lineHeight: "1.15", letterSpacing: "-0.02em", color: "#fff", margin: 0 }}>
+              Ready to build your next uniform?
+            </h2>
+            <p style={{ fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif", color: "rgba(255, 255, 255, 0.7)", fontSize: "13px", fontWeight: "400", marginTop: "10px", marginBottom: 0 }}>
+              Browse our products or message us for a fully customized team package.
+            </p>
+          </div>
+          <Link
+            href="/shop"
+            style={{
+              fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
+              fontSize: "10px",
+              fontWeight: "800",
+              letterSpacing: "0.15em",
+              textTransform: "uppercase",
+              color: "#fff",
+              border: "1px solid rgba(255, 255, 255, 0.6)",
+              padding: "14px 28px",
+              textDecoration: "none",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "8px",
+              whiteSpace: "nowrap",
+              transition: "all 0.2s ease",
+            }}
           >
-            MESSAGE ON FACEBOOK
-          </a>
-          <a
-            href="#newsletter"
-            style={{ fontSize: '10px', fontWeight: '700', letterSpacing: '0.18em', color: '#111', textTransform: 'uppercase', textDecoration: 'none', padding: '14px 24px', border: '1px solid #ccc' }}
-            onMouseOver={(e) => (e.currentTarget.style.backgroundColor = '#f5f5f5')}
-            onMouseOut={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}
-          >
-            NEWSLETTER
-          </a>
-          <a
-            href="https://www.instagram.com/mnlkingpin"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ fontSize: '10px', fontWeight: '700', letterSpacing: '0.18em', color: '#111', textTransform: 'uppercase', textDecoration: 'none', padding: '14px 24px', border: '1px solid #ccc' }}
-            onMouseOver={(e) => (e.currentTarget.style.backgroundColor = '#f5f5f5')}
-            onMouseOut={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}
-          >
-            INSTAGRAM
-          </a>
+            BROWSE PRODUCTS &rarr;
+          </Link>
         </div>
       </section>
 
       <Footer />
     </div>
-
   );
 }
