@@ -64,7 +64,7 @@ export default function Footer() {
 
           {/* Products column */}
           <div>
-            <p style={{ fontSize: '10px', fontWeight: '700', letterSpacing: '0.15em', color: '#000', marginBottom: '18px', textTransform: 'uppercase' }}>Products</p>
+            <p style={{ fontSize: '10px', fontWeight: '700', letterSpacing: '0.15em', color: '#000', marginBottom: '18px', textTransform: 'uppercase' }}>PRODUCTS</p>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '10px' }}>
               {['Basketball Jerseys', 'Volleyball Uniforms', 'Esports Jerseys', 'Corporate Wear'].map((product) => (
                 <li key={product}>
@@ -82,7 +82,7 @@ export default function Footer() {
                     }}
                     onMouseOut={(e) => {
                       e.currentTarget.style.color = '#666';
-                      e.currentTarget.style.fontWeight = '400';
+                      e.currentTarget.style.fontWeight = '#400';
                     }}>
                     {product}
                   </a>
