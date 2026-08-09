@@ -413,22 +413,7 @@ export default function Home() {
           </div>
           <Link
             href="/shop"
-            style={{
-              fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
-              fontSize: "10px",
-              fontWeight: "800",
-              letterSpacing: "0.15em",
-              textTransform: "uppercase",
-              color: "#fff",
-              border: "1px solid rgba(255, 255, 255, 0.6)",
-              padding: "14px 28px",
-              textDecoration: "none",
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "8px",
-              whiteSpace: "nowrap",
-              transition: "all 0.2s ease",
-            }}
+            className="btn-outline border border-white/80 text-white text-[10px] font-extrabold tracking-[0.15em] uppercase px-7 py-[14px] inline-flex items-center gap-2 whitespace-nowrap hover:bg-white hover:text-black transition-all duration-200"
           >
             BROWSE PRODUCTS &rarr;
           </Link>

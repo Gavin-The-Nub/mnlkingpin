@@ -111,18 +111,7 @@ export default function ContactPage() {
                 href="https://www.facebook.com/MNLKINGPINQUEZON"
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{
-                  fontSize: "10px",
-                  fontWeight: "700",
-                  letterSpacing: "0.14em",
-                  textTransform: "uppercase",
-                  padding: "8px 18px",
-                  border: "1px solid #fff",
-                  color: "#fff",
-                  backgroundColor: "transparent",
-                  textDecoration: "none",
-                  display: "inline-block",
-                }}
+                className="btn-outline border border-white text-white text-[10px] font-bold tracking-[0.14em] uppercase px-[18px] py-[8px] inline-block hover:bg-white hover:text-black transition-colors duration-200"
               >
                 ORDER NOW
               </a>

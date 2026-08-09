@@ -61,7 +61,7 @@ export default function Header() {
             </li>
           ))}
           <li>
-            <a href="https://www.facebook.com/MNLKINGPINQUEZON" target="_blank" rel="noopener noreferrer" id="order-now-btn" className="btn-outline border border-white text-white text-[10px] tracking-[0.2em] font-semibold px-4 py-[7px] hover:bg-white hover:text-black">
+            <a href="https://www.facebook.com/MNLKINGPINQUEZON" target="_blank" rel="noopener noreferrer" id="order-now-btn" className="btn-outline border border-white text-white text-[10px] tracking-[0.2em] font-semibold px-4 py-[7px] hover:bg-white hover:text-black transition-all duration-200">
               ORDER NOW
             </a>
           </li>
