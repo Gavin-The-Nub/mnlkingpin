@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState, useRef, useCallback } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import OurCommitment from "./components/OurCommitment";
 
 const PRODUCTS = [
   { id: 1, name: "LEGAZY PERFORMANCE LONG SLEEVE", price: "P850", sizes: ["M", "L", "XL"], category: "JERSEYS" },
@@ -85,8 +86,8 @@ export default function Home() {
             Built for the game. Designed to lead. Premium custom sportswear engineered for performance, comfort, and a look that sets your team apart.
           </p>
           <div className="flex flex-wrap gap-3">
-            <a href="#" id="view-products-btn" className="btn-primary bg-white text-black text-[10px] font-bold tracking-[0.2em] px-5 py-[11px] hover:bg-gray-200">VIEW PRODUCTS</a>
-            <a href="#" id="request-quote-btn" className="btn-outline border border-white text-white text-[10px] font-bold tracking-[0.2em] px-5 py-[11px] hover:bg-white hover:text-black">REQUEST A QUOTE</a>
+            <a href="#products" id="view-products-btn" className="btn-primary bg-white text-black text-[10px] font-bold tracking-[0.2em] px-5 py-[11px] hover:bg-gray-200">VIEW PRODUCTS</a>
+            <a href="https://www.facebook.com/MNLKINGPINQUEZON" target="_blank" rel="noopener noreferrer" id="request-quote-btn" className="btn-outline border border-white text-white text-[10px] font-bold tracking-[0.2em] px-5 py-[11px] hover:bg-white hover:text-black">REQUEST A QUOTE</a>
           </div>
         </div>
         <div className="absolute bottom-8 right-8 z-10 flex flex-col items-end gap-2">
@@ -186,7 +187,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 10 Years of Custom Sportswear */}
+      {/* 10 Years of Custom Sportswear Section */}
       <section className="years-section relative w-full bg-[#111] overflow-hidden flex flex-col md:flex-row" style={{ height: '100vh' }}>
         {/* Left: text content */}
         <div className="years-content flex flex-col justify-center px-16 py-20 md:w-[42%] flex-shrink-0 z-10">
@@ -197,16 +198,15 @@ export default function Home() {
           <p className="years-body">
             For over 10 years, MNL Kingpin has created custom teamwear built for
             performance, identity, and pride—from grassroots teams to
-            professional athletes. Born in Quezon City and trusted across the
+            professional athletes. Born in Quezon and trusted across the
             Philippines, we combine bold design, premium craftsmanship, and a
             passion for every game.
           </p>
           <p className="years-body mt-4">
-            Founded in Quezon City, MNL Kingpin is a trusted partner of players,
-            basketball leagues, schools, and brands across the Philippines.
+            Located in SILANGAN MAYAO, Old Manila S Rd, Lucena City, 4301 Quezon, MNL Kingpin Quezon branch was started in 2023 in Quezon and is a trusted partner of players, basketball leagues, schools, and brands across the Philippines.
           </p>
           <div className="mt-10">
-            <a href="#" id="our-story-btn" className="years-cta">OUR STORY</a>
+            <Link href="/about" id="our-story-btn" className="years-cta">OUR STORY</Link>
           </div>
         </div>
 
@@ -225,8 +225,11 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Our Commitment Section */}
+      <OurCommitment />
+
       {/* Products Section */}
-      <section className="products-section">
+      <section className="products-section" id="products">
         {/* Header row */}
         <div className="products-header">
           <span className="products-title">Products</span>

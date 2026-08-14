@@ -143,11 +143,56 @@ body {
   padding: 0 18px;
 }
 
-.marquee-dot {
-  color: rgba(255, 255, 255, 0.35);
-  font-size: 9px;
-  padding: 0 4px;
+.marquee-strip-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  height: 38px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
+
+.marquee-track-slow {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  height: 38px;
+  animation: marquee-scroll 70s linear infinite;
+  will-change: transform;
+}
+
+.marquee-strip-below {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: #000000;
+  height: 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.marquee-strip-below .marquee-text {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  color: rgba(255, 255, 255, 0.85);
+  text-transform: uppercase;
+  padding: 0 24px;
+}
+
+.marquee-strip-below .marquee-dot {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 8px;
+  padding: 0 2px;
+}
+
+
 
 /* ─── Feature Labels ─── */
 .label-tag {
@@ -658,3 +703,24 @@ body {
   height: auto;
   display: block;
 }
+
+/* ─── Commitment Title ─── */
+.commitment-title {
+  background-color: #000000;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 14px 130px 14px 48px;
+  font-size: clamp(1.6rem, 3vw, 2.25rem);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-family: Arial, Helvetica, 'Inter', -apple-system, sans-serif;
+  line-height: 1;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+
+

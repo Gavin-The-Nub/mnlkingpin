@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 const NAV_LEFT = [
   { label: "HOME", href: "/" },
-  { label: "ABOUT US", href: "#" },
+  { label: "ABOUT US", href: "/about" },
   { label: "CUSTOMIZE", href: "#" },
   { label: "CONCEPTS", href: "#" },
   { label: "SHOP", href: "#" },

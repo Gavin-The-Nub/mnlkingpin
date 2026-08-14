@@ -125,26 +125,37 @@ export default function ContactPage() {
         
         .contact-hero-title {
           font-family: 'League Gothic', 'Druk XCond Super', Impact, 'Arial Narrow', sans-serif;
-          font-size: clamp(5.5rem, 13vw, 10rem);
+          font-size: clamp(4.5rem, 9.5vw, 7.2rem);
           font-weight: 400;
-          line-height: 0.75;
-          letter-spacing: -0.01em;
+          line-height: 0.8;
+          letter-spacing: 0;
           text-transform: uppercase;
           color: #ffffff;
-          margin-bottom: 20px;
+          margin-bottom: 12px;
           display: block;
-          transform: scaleX(0.68);
+          transform: scaleX(0.62);
           transform-origin: left center;
           width: fit-content;
         }
 
         .contact-hero-subtitle {
           font-family: 'Inter', sans-serif;
-          font-size: clamp(1rem, 1.5vw, 1.25rem);
+          font-size: clamp(1.4rem, 2.6vw, 2.1rem);
+          font-weight: 700;
+          line-height: 1.18;
+          letter-spacing: -0.015em;
+          color: #ffffff;
+          margin-bottom: 16px;
+          max-width: 580px;
+        }
+
+        .contact-hero-body {
+          font-family: 'Inter', sans-serif;
+          font-size: 12px;
           font-weight: 400;
-          line-height: 1.55;
-          color: rgba(255, 255, 255, 0.85);
-          max-width: 540px;
+          line-height: 1.6;
+          color: rgba(255, 255, 255, 0.7);
+          max-width: 480px;
         }
 
         .quick-card {
@@ -237,7 +248,10 @@ export default function ContactPage() {
         <h1 className="contact-hero-title">
           CONTACT US
         </h1>
-        <p className="contact-hero-subtitle">
+        <h2 className="contact-hero-subtitle">
+          Get in Touch with MNL Kingpin
+        </h2>
+        <p className="contact-hero-body">
           Ready to create your team wear, request a quote, or ask about an order? Our MNL Kingpin team would love to hear from you.
         </p>
       </div>
