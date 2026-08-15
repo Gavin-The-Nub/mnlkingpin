@@ -94,7 +94,7 @@ export default function AboutPage() {
           </h2>
 
           <p className="about-hero-body">
-            Located in SILANGAN MAYAO, Old Manila S Rd, Lucena City, 4301 Quezon, MNL Kingpin Quezon branch was started in 2023 in Quezon and has been a favorite go-to sportswear brand of local celebrities and players alike.
+            Located in SILANGAN MAYAO, Old Manila S Rd, Lucena City, 4301 Quezon, MNL Kingpin Quezon branch was started in 2023 in Quezon and has quickly become the top choice for many across the Quezon province looking for custom jerseys and merchandise, as well as a favorite among local players.
           </p>
         </div>
 
