@@ -109,22 +109,18 @@ body {
   width: 100%;
   overflow: hidden;
   background: #000;
-  height: 48px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  height: 42px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .marquee-track {
   display: flex;
   align-items: center;
   width: max-content;
-  height: 48px;
-  animation: marquee-scroll 28s linear infinite;
+  height: 42px;
+  animation: marquee-scroll 15s linear infinite;
   will-change: transform;
-}
-
-.marquee-strip:hover .marquee-track {
-  animation-play-state: paused;
 }
 
 .marquee-item {

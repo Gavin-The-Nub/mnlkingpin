@@ -5,7 +5,6 @@ import Link from "next/link";
 import { useState, useRef, useCallback } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import OurCommitment from "./components/OurCommitment";
 
 const PRODUCTS = [
   { id: 1, name: "LEGAZY PERFORMANCE LONG SLEEVE", price: "P850", sizes: ["M", "L", "XL"], category: "JERSEYS" },
@@ -96,17 +95,19 @@ export default function Home() {
       </section>
 
       {/* Marquee Strip */}
-      <div className="marquee-strip">
-        <div className="marquee-track">
-          {[...Array(8)].map((_, i) => (
-            <span key={i} className="marquee-item">
-              <span className="marquee-text">MNL KINGPIN</span>
-              <span className="marquee-dot">✦</span>
-              <span className="marquee-text">GMSTRNG</span>
-              <span className="marquee-dot">✦</span>
-              <span className="marquee-text">PREMIUM CUSTOM SPORTSWEAR</span>
-              <span className="marquee-dot">✦</span>
-            </span>
+      <div className="marquee-strip border-t border-b border-white/10 bg-black overflow-hidden flex items-center">
+        <div className="marquee-track flex items-center">
+          {[...Array(6)].map((_, i) => (
+            <div key={i} className="flex-shrink-0 flex items-center px-2">
+              <Image
+                src="/marquee.png"
+                alt="MNL Kingpin Marquee"
+                width={1600}
+                height={160}
+                className="h-6 md:h-7 w-auto object-contain"
+                priority
+              />
+            </div>
           ))}
         </div>
       </div>
@@ -224,9 +225,6 @@ export default function Home() {
           <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#111] to-transparent pointer-events-none" />
         </div>
       </section>
-
-      {/* Our Commitment Section */}
-      <OurCommitment />
 
       {/* Products Section */}
       <section className="products-section" id="products">
